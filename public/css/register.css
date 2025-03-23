@@ -1,0 +1,133 @@
+/* Style dasar untuk body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    width:100vw;
+    display: flex;
+    background-color: #f8f8f8; */
+}
+
+/* Container utama */
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Box register */
+.register-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    justify-content: center;
+}
+
+.register-box h2 {
+    margin-bottom: 10px;
+}
+
+.register-box p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Form style */
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Link lupa password */
+.forgot-password {
+    text-align: right;
+    display: block;
+    margin-top: 5px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+/* Tombol submit */
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Link login */
+.login-link {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.login-link a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+/* Box untuk gambar */
+
+
+/* -----------------------------
+   MEDIA QUERY UNTUK RESPONSIVE
+   ----------------------------- */
+@media (max-width: 768px) {
+  /* Container menjadi kolom saat layar di bawah 768px */
+  .container {
+    flex-direction: column;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto; /* Untuk memposisikan di tengah */
+  }
+
+  /* Box gambar di atas/bawah register-box */
+  .image-box {
+    order: -1; /* Jika ingin gambar di atas form saat mobile */
+    height: 100px; /* Atur tinggi agar gambar tetap proporsional */
+  }
+
+  /* Sesuaikan padding agar form tidak terlalu lebar di mobile */
+  .register-box {
+    /* padding: 20px; */
+    height: 100%;
+  }
+}
+
+.image-box {
+    padding: 20px;
+    overflow: hidden;
+    padding: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+
+}
+.image-box > img{
+    border-radius:1rem;
+}
