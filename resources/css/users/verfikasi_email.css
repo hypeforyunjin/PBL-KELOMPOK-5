@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Ganti Arial dengan Poppins */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Menghindari scrollbar */
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px; /* Atur sesuai kebutuhan */
+    height: 100%;
+    max-height: 600px; /* Atur tinggi maksimum */
+}
+
+.form-container {
+    flex: 1;
+    background-color: #fff;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Menyembunyikan bagian gambar yang tidak terlihat */
+    max-height: 600px; /* Atur tinggi kontainer */
+}
+
+.image-container img {
+    max-width: 80%; /* Atur banyaknya lebar gambar */
+    max-height: 80%; /* Atur banyaknya tinggi gambar */
+    height: auto; /* Menjaga proporsi gambar */
+    object-fit: cover; /* Menjaga proporsi dan mengisi kontainer */
+}
