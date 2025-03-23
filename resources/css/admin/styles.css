@@ -1,0 +1,131 @@
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Style body */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Container utama yang membungkus form dan gambar */
+  .container {
+    display: flex;
+    width: 80%;
+    max-width: 900px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  /* Bagian login (form) */
+  .login-box {
+    flex: 0 0 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  /* Judul selamat datang */
+  .login-box h2 {
+    margin-bottom: 10px;
+  }
+  
+  /* Deskripsi singkat */
+  .login-box p {
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  /* Form style */
+  .login-box form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-box label {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .login-box input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Tombol login */
+  .login-box button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Footer text */
+  .footer-text {
+    margin-top: 20px;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+  }
+  
+  /* Bagian gambar */
+  .image-box {
+    flex: 0 0 50%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Tampilkan gambar di background */
+  .image-box::before {
+    content: '';
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* MEDIA QUERIES UNTUK RESPONSIVE DESIGN */
+  @media (max-width: 768px) {
+    /* Container utama berubah menjadi kolom */
+    .container {
+      flex-direction: column;
+      width: 90%;
+      max-width: 500px; /* Boleh diatur sesuai kebutuhan */
+      margin: 0 auto;
+    }
+  
+    /* Bagian login & image-box mengambil lebar penuh */
+    .login-box, 
+    .image-box {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+  
+    /* Atur tinggi minimal agar gambar tetap terlihat */
+    .image-box {
+      height: 250px; /* Silakan sesuaikan */
+    }
+  
+    /* Sesuaikan padding di bagian form */
+    .login-box {
+      padding: 20px;
+    }
+  }
+  
