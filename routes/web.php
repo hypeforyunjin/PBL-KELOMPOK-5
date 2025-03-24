@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('customer.auth.login');
-});
+})->name('customer.login');
 
 
 Route::get('/dashboard', function () {
