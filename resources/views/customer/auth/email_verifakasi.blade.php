@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset("css/users/verifikasi_email.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/verfikasi_email.css") }}">
     <title>Lupa Password</title>
 </head>
 
@@ -24,14 +24,14 @@
                 <button type="submit">Kirim Link Reset Password</button>
             </form>
 
-            <form method="POST" action="{{ route('logout') }}">
+            <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <p><button type="submit">Kembali ke Sign up</button></p>
             </form>
 
         </div>
         <div class="image-container">
-            <img src="gorden.jpg" alt="Interior" />
+            <img src="img/gorden.jpg" alt="Interior" />
         </div>
     </div>
 </body>
