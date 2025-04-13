@@ -9058,7 +9058,8 @@ textarea.form-control-lg {
 
 .bg-body-secondary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-secondary-bg-rgb), var(--bs-bg-opacity)) !important;
+  /* background-color: rgba(var(--bs-secondary-bg-rgb), var(--bs-bg-opacity)) !important; */
+  background-color: #565449 !important;
 }
 
 .bg-body-tertiary {
@@ -12971,7 +12972,7 @@ textarea.form-control-lg {
 .app-sidebar {
   --lte-sidebar-hover-bg: rgba(0, 0, 0, 0.1);
   --lte-sidebar-color: #343a40;
-  --lte-sidebar-hover-color: #212529;
+  --lte-sidebar-hover-color: #8092a5;
   --lte-sidebar-active-color: #000;
   --lte-sidebar-menu-active-bg: rgba(0, 0, 0, 0.1);
   --lte-sidebar-menu-active-color: #000;
