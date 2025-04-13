@@ -41,10 +41,6 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
 
 
-    Route::get('login', [AuthenticatedSessionController::class, 'create'])
-        ->name('login');
-
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
