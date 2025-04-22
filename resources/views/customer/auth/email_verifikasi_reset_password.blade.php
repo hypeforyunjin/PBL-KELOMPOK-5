@@ -13,21 +13,14 @@
         <div class="form-container">
             <h1>Lupa Password 😟</h1>
             <p>Jangan khawatir! Kami akan mengembalikan akun Anda.</p>
-            @if (session('status') == 'verification-link-sent')
-                <div class="mb-4 font-medium text-sm text-green-600">
-                    {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-                </div>
-            @endif
-            <form method="POST" action="{{ route('verification.send') }}">
+
+            <form method="POST" action="{{ route('password.email') }}">
                 @csrf
-                <input type="email" placeholder="Masukkan email Anda" required>
+                <input type="email" name="email" placeholder="Masukkan email Anda" required>
                 <button type="submit">Kirim Link Reset Password</button>
             </form>
 
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
-                <p><button type="submit">Kembali ke Sign up</button></p>
-            </form>
+                <a href="route('login')">Kembali ke Sign up</a>
 
         </div>
         <div class="image-container">
