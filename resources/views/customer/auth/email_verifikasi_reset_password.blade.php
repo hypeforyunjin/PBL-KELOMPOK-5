@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset("css/verfikasi_email.css") }}">
+    <link rel="stylesheet" href="{{ asset('css/verfikasi_email.css') }}">
     <title>Lupa Password</title>
 </head>
 
@@ -20,11 +20,11 @@
                 <button type="submit">Kirim Link Reset Password</button>
             </form>
 
-                <a href="route('login')">Kembali ke Sign up</a>
-
+            <a href="{{ route('login') }}">Kembali ke Sign up</a>
         </div>
+
         <div class="image-container">
-            <img src="img/gorden.jpg" alt="Interior" />
+            <img src="{{ asset('img/gorden.jpg') }}" alt="Interior" />
         </div>
     </div>
 </body>
