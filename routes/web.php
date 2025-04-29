@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\AuthAdminController;
 use Illuminate\Support\Facades\Route;
@@ -22,5 +23,8 @@ Route::middleware('auth')->group(function () {
 Route::get('admin/login', [AuthAdminController::class,'Index'])->name('admin.login');
 Route::post('admin/login', [AuthAdminController::class,'AuthAdmin'])->name('admin.loginSubmit');
 Route::get('/admin/dashboard', [AuthAdminController::class,"Dashboard"])->name('admin.dashboard')->middleware('admin');
+
+Route::get('admin/dashboardLTE', [DashboardController::class,'dashboardadmin']);
+
 
 require __DIR__.'/auth.php';
