@@ -86,4 +86,9 @@ class ProductController extends Controller
 
         return view('Produk.produk-gorden', compact('products'));
     }
+    public function create()
+{
+    return view('produk.CreateProduk');
 }
+}
+
