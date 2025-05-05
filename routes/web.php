@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\AuthAdminController;
+use App\Http\Controllers\GordenController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,5 +23,11 @@ Route::middleware('auth')->group(function () {
 Route::get('admin/login', [AuthAdminController::class,'Index'])->name('admin.login');
 Route::post('admin/login', [AuthAdminController::class,'AuthAdmin'])->name('admin.loginSubmit');
 Route::get('/admin/dashboard', [AuthAdminController::class,"Dashboard"])->name('admin.dashboard')->middleware('admin');
+Route::get('/admin/add-gorden', [GordenController::class,"create"])->name('admin.addgorden')->middleware('admin');
+Route::get('/admin/gorden-index', [GordenController::class,"index"])->name('admin.indexgorden')->middleware('admin');
+Route::get('/admin/edit-gorden/{gorden}', [GordenController::class,"edit"])->name('admin.editgorden')->middleware('admin');
+Route::put ('/admin/edit/{gorden}', [GordenController::class,"update"])->name('admin.edit')->middleware('admin');
+Route::post ('/admin/add-post', [GordenController::class,"store"])->name('admin.addgorden.post')->middleware('admin');
+Route::delete ('/admin/delete-gorden/{gorden}', [GordenController::class,"destroy"])->name('admin.deletegorden')->middleware('admin');
 
 require __DIR__.'/auth.php';
