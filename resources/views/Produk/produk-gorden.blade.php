@@ -21,12 +21,15 @@
 
         <!-- Bottom Section -->
         <div class="flex flex-col space-y-6 items-center">
-            @foreach (['bell', 'logout'] as $icon)
-                <button>
-                    @include('components.icons.' . $icon)
-                </button>
-            @endforeach
-        </div>
+                @include('components.icons.bell')
+                <!-- Tombol Logout -->
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit">
+                        @include('components.icons.logout')
+                    </button>
+                </form>
+            </div>
     </aside>
 
     <!-- Main Content -->

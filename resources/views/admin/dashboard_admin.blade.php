@@ -14,8 +14,6 @@
         <ul class="mt-5">
             <li class="py-2 text-center hover:bg-gray-700 cursor-pointer">Dashboard</li>
             <li class="py-2 text-center hover:bg-gray-700 cursor-pointer">Produk</li>
-            <li class="py-2 text-center hover:bg-gray-700 cursor-pointer">Transaksi</li>
-            <li class="py-2 text-center hover:bg-gray-700 cursor-pointer">Pengaturan</li>
         </ul>
     </div>
 
