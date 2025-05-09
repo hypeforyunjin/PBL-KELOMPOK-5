@@ -13,8 +13,10 @@
             <h2 class="text-xl font-bold mb-6">Gorden Dashboard</h2>
             <nav>
                 <ul>
-                    <li><a href="#" class="block py-2 px-4 hover:bg-slate-700 rounded">Dashboard</a></li>
-                    <li><a href="#" class="block py-2 px-4 bg-slate-700 rounded">Produk</a></li>
+                    <li class="py-2 text-center hover:bg-gray-700 cursor-pointer">
+                        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+                    </li>
+                    <li><li class="py-2 text-center hover:bg-gray-700 cursor-pointer">Product</li>
                 </ul>
             </nav>
         </aside>
@@ -24,7 +26,7 @@
             <div class="bg-white p-4 rounded shadow">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-xl">Dashboard Gorden</h2>
-                    <button class="bg-green-500 text-white px-4 py-2 rounded">Tambah Produk</button>
+                    <a href="{{ route('produk.CreateProduk') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Tambah Produk</a>
                 </div>
                 <table class="w-full border-collapse border border-gray-200">
                     <thead>
