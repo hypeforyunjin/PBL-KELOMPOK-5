@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+dashboard di pindahkan di admin lte =============
+dashboardLTE.blade,php
+
+{{-- <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -135,4 +138,4 @@
 </script>
 
 </body>
-</html>
+</html> --}}

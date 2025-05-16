@@ -293,6 +293,7 @@
                 @yield('content')
             </div>
         </main>
+        
 
         <!-- Footer -->
         <footer class="app-footer">
