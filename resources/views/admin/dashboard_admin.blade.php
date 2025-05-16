@@ -8,7 +8,7 @@
 </head>
 <body class="bg-gray-100">
 
-<div class="flex">
+  <div class="flex">
   <!-- Sidebar -->
   <div class="w-64 bg-gray-800 text-white h-screen">
     <h2 class="text-center text-2xl py-4">Dashboard</h2>
