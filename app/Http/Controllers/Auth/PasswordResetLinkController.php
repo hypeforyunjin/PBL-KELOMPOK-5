@@ -15,7 +15,7 @@ class PasswordResetLinkController extends Controller
      */
     public function create(): View
     {
-        return view('customer.auth.email_verifakasi');
+        return view('customer.auth.email_verifikasi_reset_password');
     }
 
     /**

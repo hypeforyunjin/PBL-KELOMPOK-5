@@ -16,4 +16,8 @@ class DashboardController extends Controller
             'user' => Auth::user(),
         ]);
     }
+    public function dashboardadmin()
+    {
+        return view('admin/dashboardLTE');
+    }
 }
