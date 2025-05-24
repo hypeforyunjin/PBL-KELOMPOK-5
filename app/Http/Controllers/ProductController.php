@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
+
+
 
 
 class ProductController extends Controller
 {
-    // Method untuk menampilkan daftar produk
     public function index()
     {
-        // Data produk dummy
         $products = [
             [
                 'title' => 'Gorden 1',
@@ -60,7 +61,7 @@ class ProductController extends Controller
             ],
             [
                 'title' => 'Gorden 6',
-                'subtitle' => 'Vertical Blind',
+                'subtitle' => 'Vertical blind',
                 'price' => 150000,
                 'old_price' => null,
                 'tag' => 'New',
@@ -86,6 +87,7 @@ class ProductController extends Controller
                 'image' => asset('img/Gorden 8.jpg'),
             ],
         ];
+
         return view('Produk.produk-gorden', compact('products'));
 
         
@@ -132,4 +134,7 @@ class ProductController extends Controller
         return redirect()->route('produk.admin')->with('success', 'Produk berhasil ditambahkan!');
     }
 
+
+        return view('Produk.produk-gorden', compact('products'));
+    }
 }
