@@ -17,15 +17,4 @@ class DashboardController extends Controller
             'user' => Auth::user(),
         ]);
     }
-
-    public function admin()
-    {
-        if (!Auth::check()) {
-            return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu.');
-        }
-
-        return view('admin.dashboard_admin', [
-            'user' => Auth::user(),
-        ]);
-    }
 }
