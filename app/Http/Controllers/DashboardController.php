@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class DashboardController extends Controller
 {
     public function index()
@@ -13,6 +14,17 @@ class DashboardController extends Controller
         }
     
         return view('customer.auth.DashboardPengguna', [
+            'user' => Auth::user(),
+        ]);
+    }
+
+    public function admin()
+    {
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu.');
+        }
+
+        return view('admin.dashboard_admin', [
             'user' => Auth::user(),
         ]);
     }

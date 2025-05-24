@@ -12,6 +12,28 @@ use Illuminate\View\View;
 class ProfileController extends Controller
 {
     /**
+     * Menampilkan halaman profil pelanggan.
+     *
+     * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
+     */
+    public function showProfile()
+    {
+        // Pastikan user sudah login, jika belum arahkan ke halaman login dengan pesan error
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu.');
+        }
+
+        // Ambil data user yang sedang login
+        $user = Auth::user();
+
+        // Render view 'customer.ProfilPelanggan' dengan data user
+        return view('customer.auth.ProfilPelanggan', [
+            'user' => $user,
+        ]);
+    }
+
+
+    /**
      * Display the user's profile form.
      */
     public function edit(Request $request): View
