@@ -73,6 +73,7 @@ Route::get('/produk-gorden', [ProductController::class, 'index']);
 // Produk gorden pengguna
 Route::get('/produk-gorden', [ProductController::class, 'index'])->name('produk.gorden');
 
+
 // Produk untuk admin
 Route::get('/produk', [ProductController::class, 'AdminProduk'])->name('produk.admin');
 Route::get('/admin/produk/create', [ProductController::class, 'create'])->name('produk.CreateProduk');
