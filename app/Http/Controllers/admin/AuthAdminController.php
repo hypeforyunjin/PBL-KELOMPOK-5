@@ -13,7 +13,7 @@ class AuthAdminController extends Controller
         return view("admin.login_admin");
     }
     public function Dashboard(){
-        return view("admin.dashboard_Admin");
+        return view("admin.dashboardLTE");
     }
     public function AuthAdmin(Request $request)
     {

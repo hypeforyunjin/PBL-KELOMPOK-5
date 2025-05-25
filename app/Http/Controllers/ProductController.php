@@ -90,10 +90,10 @@ class ProductController extends Controller
 
         return view('Produk.produk-gorden', compact('products'));
 
-        
+
     }
 
-    public function AdminProduk() 
+    public function AdminProduk()
     {
         $produk = [
             ['nama' => 'Arla Kentut', 'deskripsi' => 'Cocok', 'harga' => 'Rp. 1.000.000', 'stock' => 10, 'gambar' => 'path/to/image1.jpg', 'jenis' => 'Gorden 1'],
@@ -101,7 +101,7 @@ class ProductController extends Controller
         ];
 
         return view('produk.AdminProduk', compact('produk'));
-            
+
     }
 
     public function create()
@@ -132,9 +132,8 @@ class ProductController extends Controller
 
         // Redirect ke halaman admin produk
         return redirect()->route('produk.admin')->with('success', 'Produk berhasil ditambahkan!');
-    }
-
-
-        return view('Produk.produk-gorden', compact('products'));
+        // return view('Produk.produk-gorden', compact('products'));
     }
 }
+
+

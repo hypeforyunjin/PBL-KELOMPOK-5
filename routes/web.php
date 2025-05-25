@@ -5,27 +5,27 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\AuthAdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GordenController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 
 
 
 
-use App\Http\Controllers\admin\AuthAdminController;
 
 
 
 // Halaman awal: login customer
 Route::get('/', function () {
     return view('customer.auth.login');
-})->name('customer.login');
+})->name('customer.auth.login');
 
 
 // Route untuk register - tampilkan halaman register
 Route::get('/register', [RegisteredUserController::class, 'create'])
     ->middleware('guest') // pastikan hanya tamu yang bisa akses
     ->name('register');
-    
+
     // Route untuk register - proses penyimpanan user baru
     Route::post('/register', [RegisteredUserController::class, 'store'])
         ->middleware('guest');
