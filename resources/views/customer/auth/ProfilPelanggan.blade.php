@@ -18,28 +18,8 @@
 <body class="flex h-screen bg-gray-100">
 
   <!-- Sidebar -->
-  <aside class="w-16 bg-[#0d2b2f] h-screen fixed top-0 left-0 flex flex-col justify-between py-4 items-center z-50">
-    <!-- Top Section -->
-    <div class="flex flex-col space-y-6 items-center">
-      @foreach (['home', 'search', 'barang', 'keranjang', 'chat', 'user'] as $icon)
-        <button aria-label="{{ ucfirst($icon) }}">
-          @include('components.icons.' . $icon)
-        </button>
-      @endforeach
-    </div>
 
-    <!-- Bottom Section -->
-    <div class="flex flex-col space-y-6 items-center">
-      @include('components.icons.bell')
-      <!-- Tombol Logout -->
-      <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit" aria-label="Logout">
-          @include('components.icons.logout')
-        </button>
-      </form>
-    </div>
-  </aside>
+  @include('layouts.sidebar-admin')
 
   <!-- Main Content -->
   <main class="flex-1 pl-20 pt-6">
@@ -69,8 +49,8 @@
               id="nama_lengkap"
               name="nama_lengkap"
               value="Nissa Serena Primadani"
-              readonly
-              class="w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-700 bg-gray-50"
+
+              class="w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-700 bg-gray-50" readonly
             />
           </div>
 
@@ -82,8 +62,8 @@
               id="nomor_telepon"
               name="nomor_telepon"
               value="+62 856023310293"
-              readonly
-              class="w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-700 bg-gray-50"
+
+              class="w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-700 bg-gray-50" readonly
             />
           </div>
 
@@ -95,8 +75,8 @@
               id="email"
               name="email"
               value="serenasey@gmail.com"
-              readonly
-              class="w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-700 bg-gray-50"
+
+              class="w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-700 bg-gray-50" readonly
             />
           </div>
 
@@ -112,17 +92,21 @@
                   class="w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-700 bg-gray-50"
                 >
                   <option value="">Pilih Kota</option>
+                  <option value="bali">Bali</option>
+                  <option value="banyuwangi" >Banyuwangi</option>
                 </select>
               </div>
 
               <div>
-                <label for="kabupaten_kota_2" class="block text-xs font-medium text-gray-500 mb-1">Kabupaten / Kota</label>
+                <label for="kabupaten_kota_2" class="block text-xs font-medium text-gray-500 mb-1">Kecamatan</label>
                 <select
                   id="kabupaten_kota_2"
                   name="kabupaten_kota_2"
-                  class="w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-700 bg-gray-50"
+                  class="w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-700 bg-gray-50" readonly
                 >
-                  <option value="">Pilih Kota</option>
+                    <option value="">Pilih Kota</option>
+                  <option value="denpasar">Denpasar</option>
+                  <option value="denpasar selatan">Denpasar Selatan</option>
                 </select>
               </div>
             </div>
