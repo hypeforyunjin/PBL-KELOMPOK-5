@@ -48,7 +48,7 @@
               type="text"
               id="nama_lengkap"
               name="nama_lengkap"
-              value="Nissa Serena Primadani"
+              value="{{ $user->name }}"
 
               class="w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-700 bg-gray-50" readonly
             />
@@ -61,7 +61,7 @@
               type="tel"
               id="nomor_telepon"
               name="nomor_telepon"
-              value="+62 856023310293"
+              value="{{ $user->phone }}"
 
               class="w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-700 bg-gray-50" readonly
             />
@@ -74,7 +74,7 @@
               type="email"
               id="email"
               name="email"
-              value="serenasey@gmail.com"
+              value="{{ $user->email }}"
 
               class="w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-700 bg-gray-50" readonly
             />

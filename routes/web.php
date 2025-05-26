@@ -50,7 +50,9 @@ Route::get('/keranjang', function () {
     return view('customer.auth.keranjangPelanggan');
 })->name('keranjang.pelanggan');
 
-
+Route::get('/DetailProduk', function () {
+    return view('Produk.DetailProduk');
+})->name('produk.DetailProduk');
 
 // Route untuk user terautentikasi
 
