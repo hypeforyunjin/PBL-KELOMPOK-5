@@ -1,46 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Pengguna</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-white font-sans text-gray-800">
 
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <aside class="w-16 bg-[#0d2b2f] min-h-screen flex flex-col justify-between py-4 items-center">
-            <!-- Bagian Atas -->
-            <div class="flex flex-col space-y-6 items-center">
-                @foreach (['home', 'search'] as $icon)
-                    <button>
-                        @include('components.icons.' . $icon)
-                    </button>
-                @endforeach
-                <a href="{{ route('produk.gorden') }}" aria-label="Ke Produk Gorden">
-                    <button>
-                        @include('components.icons.barang') 
-                    </button>
-                </a>
-                @foreach (['keranjang', 'chat', 'user'] as $icon)
-                    <button>
-                        @include('components.icons.' . $icon)
-                    </button>
-                @endforeach
-            </div>
+        @include('layouts.sidebar-admin')
 
-            <!-- Bottom Section -->
-            <div class="flex flex-col space-y-6 items-center">
-                @include('components.icons.bell')
-                <!-- Tombol Logout -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit">
-                        @include('components.icons.logout')
-                    </button>
-                </form>
-            </div>
+        <!-- Bottom Section -->
+        <div class="flex flex-col space-y-6 items-center">
+            @include('components.icons.bell')
+            <!-- Tombol Logout -->
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit">
+                    @include('components.icons.logout')
+                </button>
+            </form>
+        </div>
         </aside>
 
 
@@ -59,4 +43,5 @@
     </div>
 
 </body>
+
 </html>
