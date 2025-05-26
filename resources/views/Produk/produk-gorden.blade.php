@@ -38,6 +38,7 @@
 
         <main class="flex-1 p-8 ">
             <div class="grid grid-cols-4 gap-6">
+                <a href="{{ route('produk.DetailProduk') }}">
                 @forelse ($products as $product)
                     <div class="bg-white rounded-lg shadow-md overflow-hidden">
                         <div class="relative">
@@ -62,9 +63,11 @@
                             </div>
                         </div>
                     </div>
+                    </a>
                 @empty
                     <p>Produk tidak di temukan</p>
                 @endforelse
+
             </div>
         </main>
 

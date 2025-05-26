@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -23,13 +24,14 @@ class ProfileController extends Controller
             return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu.');
         }
 
+
         // Ambil data user yang sedang login
         $user = Auth::user();
 
         // Render view 'customer.ProfilPelanggan' dengan data user
         return view('customer.auth.ProfilPelanggan', [
             'user' => $user,
-        ]);
+        ], compact('user') );
     }
 
 
