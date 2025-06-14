@@ -14,7 +14,7 @@
             <nav>
                 <ul>
                     <li class="py-2 text-center hover:bg-gray-700 cursor-pointer">
-                        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+                        <a href="{{ route('admin.dashboardLTE') }}">Dashboard</a>
                     </li>
                     <li><li class="py-2 text-center hover:bg-gray-700 cursor-pointer">Product</li>
                 </ul>

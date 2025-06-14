@@ -167,6 +167,11 @@
                                         <p>Dashboard</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.indexgorden') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-box"></i>
+                                        <p>Produk</p>
+                                    </a>
                             </ul>
                         </li>
                     </ul>
@@ -200,7 +205,7 @@
                         <ul class="mt-5">
                             <li class="py-2 text-center hover:bg-gray-700 cursor-pointer">Dashboard</li>
                             <li class="py-2 text-center hover:bg-gray-700 cursor-pointer">
-                                <a href="{{ route('produk.admin') }}">Produk</a>
+                                <a href="{{ route('admin.indexgorden') }}">Produk</a>
                             </li>
                         </ul>
                     </div> --}}
@@ -232,67 +237,34 @@
                             </div>
                         </div>
 
-                        <!-- Product List -->
-                        <div>
-                            <!-- Produk 1 -->
-                            <div class="bg-white rounded-lg shadow p-4 mb-4 flex justify-between items-center">
-                                <div class="flex items-center space-x-4">
-                                    <img src="{{ asset('img/gorden 5.jpg') }}" alt="Gorden 5" class="w-12 h-12 rounded">
-                                    <div>
-                                        <h4 class="text-lg">Gorden 5</h4>
-                                        <p class="text-gray-600">Rp 150.000</p>
-                                    </div>
-                                </div>
+                        <div class="space-y-6 mt-8">
+    @foreach($gordens as $gorden)
+    <div class="bg-white rounded-xl shadow-md p-4 flex items-center justify-between">
+        <!-- Kiri: Gambar & Info -->
+        <div class="flex items-center gap-4">
+            <img src="{{ asset('storage/GambarGorden/' . $gorden->gambar) }}"
+                 alt="Gambar Gorden"
+                 class="w-16 h-16 object-cover rounded-md">
 
-                                <div class="flex flex-col items-center space-y-2">
-                                    <div class="flex items-center space-x-2">
-                                        <span id="label-toggle-1" class="font-semibold">Private</span>
-                                        <label class="relative inline-flex items-center cursor-pointer">
-                                            <input type="checkbox" id="toggle-1" class="sr-only"
-                                                onchange="toggleLabel(1)">
-                                            <div id="track-1"
-                                                class="w-11 h-6 bg-gray-200 rounded-full relative transition-colors duration-300">
-                                                <div id="dot-1"
-                                                    class="absolute top-0.5 left-0.5 bg-gray-800 h-5 w-5 rounded-full transition-all duration-300 transform">
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Produk 2 -->
-                            <div class="bg-white rounded-lg shadow p-4 mb-4 flex justify-between items-center">
-                                <div class="flex items-center space-x-4">
-                                    <img src="{{ asset('img/gorden 8.jpg') }}" alt="Gorden 6" class="w-12 h-12 rounded">
-                                    <div>
-                                        <h4 class="text-lg">Gorden 6</h4>
-                                        <p class="text-gray-600">Rp 260.000</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex flex-col items-center space-y-2">
-                                    <div class="flex items-center space-x-2">
-                                        <span id="label-toggle-2" class="font-semibold">Private</span>
-                                        <label class="relative inline-flex items-center cursor-pointer">
-                                            <input type="checkbox" id="toggle-2" class="sr-only"
-                                                onchange="toggleLabel(2)">
-                                            <div id="track-2"
-                                                class="w-11 h-6 bg-gray-200 rounded-full relative transition-colors duration-300">
-                                                <div id="dot-2"
-                                                    class="absolute top-0.5 left-0.5 bg-gray-800 h-5 w-5 rounded-full transition-all duration-300 transform">
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @yield('content')
+            <div>
+                <h3 class="font-semibold text-lg">{{ $gorden->nama_gorden }}</h3>
+                <p class="text-gray-600">Rp {{ number_format($gorden->harga, 0, ',', '.') }}</p>
             </div>
-        </main>
+        </div>
+
+        <!-- Kanan: Switch Private -->
+        <div class="flex items-center gap-2">
+            <span class="text-sm text-gray-700">Private</span>
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" class="sr-only peer">
+                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:bg-gray-700"></div>
+                <div class="absolute left-1 top-1 bg-gray-900 w-4 h-4 rounded-full transition-all peer-checked:translate-x-full"></div>
+            </label>
+        </div>
+    </div>
+    @endforeach
+</div>
+
         
 
         <!-- Footer -->

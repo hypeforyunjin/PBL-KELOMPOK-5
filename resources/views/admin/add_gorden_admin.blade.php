@@ -1,53 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tambah Gorden</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <form action="{{ route('admin.addgorden.post') }}" method="post" enctype="multipart/form-data">
-            @csrf
+<body class="bg-gray-100 font-sans">
 
-            <!-- Nama -->
-            <label for="nama">Nama Produk:</label>
-            <input type="text" id="nama" name="nama_gorden" required minlength="3">
-            <br>
+<div class="flex">
+  <!-- Sidebar -->
+  <aside class="fixed top-0 left-0 w-64 h-screen bg-[#001f3f] text-white p-6">
+    <h2 class="text-xl font-bold mb-6">Gorden Dashboard</h2>
+    <nav>
+      <ul>
+        <li><a href="#" class="block py-2 px-4 hover:bg-slate-700 rounded">Dashboard</a></li>
+        <li><a href="#" class="block py-2 px-4 bg-slate-700 rounded">Produk</a></li>
+      </ul>
+    </nav>
+  </aside>
 
-            <!-- Deskripsi -->
-            <label for="deskripsi">Deskripsi:</label>
-            <textarea id="deskripsi" name="deskripsi"></textarea>
-            <br>
+  <!-- Main Content -->
+  <main class="flex-1 p-10 ml-64">
+    <h1 class="text-2xl font-bold mb-6">Tambah Gorden</h1>
+    <div class="bg-white p-10 rounded-lg shadow-md">
 
-            <!-- Harga -->
-            <label for="harga">Harga:</label>
-            <input type="number" id="harga" name="harga" required step="0.01" min="0">
-            <br>
+      <form action="{{ route('admin.addgorden.post') }}" method="POST" enctype="multipart/form-data">
+        @csrf
 
-            <!-- Stok -->
-            <label for="stock">Stok:</label>
-            <input type="number" id="stock" name="stok" min="0">
-            <br>
+        <!-- Nama Produk -->
+        <div class="grid grid-cols-3 gap-4 mb-4 items-center">
+          <label for="nama" class="font-bold">Nama Produk</label>
+          <input type="text" id="nama" name="nama_gorden" class="col-span-2 bg-blue-50 p-2 rounded w-full" required minlength="3">
+        </div>
 
-            <!-- Gambar -->
-            <label for="gambar">Upload Gambar:</label>
-            <input type="file" id="gambar" name="gambar" accept=".jpg,.jpeg,.webp,.png">
-            <br>
+        <!-- Deskripsi -->
+        <div class="grid grid-cols-3 gap-4 mb-4 items-center">
+          <label for="deskripsi" class="font-bold">Deskripsi</label>
+          <textarea id="deskripsi" name="deskripsi" rows="3" class="col-span-2 bg-blue-50 p-2 rounded w-full"></textarea>
+        </div>
 
-            <!-- Jenis Gorden -->
-            <label for="jenis_id">Jenis Gorden:</label>
-            <select id="jenis_id" name="jenis_id" required>
-                <!-- Ini contoh saja, nanti kamu bisa looping dari controller -->
-                <option value="">-- Pilih Jenis --</option>
-                @foreach ($JenisGorden as $Jenis )
-                <option value="{{ $Jenis["id"] }}">{{$Jenis["nama_jenis"]}}</option>
-                @endforeach
-            </select>
-            <br>
+        <!-- Harga -->
+        <div class="grid grid-cols-3 gap-4 mb-4 items-center">
+          <label for="harga" class="font-bold">Harga</label>
+          <input type="number" id="harga" name="harga" class="col-span-2 bg-blue-50 p-2 rounded w-full" step="0.01" min="0" required>
+        </div>
 
-            <button type="submit">Simpan</button>
-        </form>
+        <!-- Stok -->
+        <div class="grid grid-cols-3 gap-4 mb-4 items-center">
+          <label for="stock" class="font-bold">Stok</label>
+          <input type="number" id="stock" name="stok" class="col-span-2 bg-blue-50 p-2 rounded w-full" min="0">
+        </div>
+
+        <!-- Gambar -->
+        <div class="grid grid-cols-3 gap-4 mb-4 items-center">
+          <label for="gambar" class="font-bold">Upload Gambar</label>
+          <input type="file" id="gambar" name="gambar" class="col-span-2 bg-gray-300 p-2 rounded w-full" accept=".jpg,.jpeg,.webp,.png">
+        </div>
+
+        <!-- Jenis Gorden -->
+        <div class="grid grid-cols-3 gap-4 mb-4 items-center">
+          <label for="jenis_id" class="font-bold">Jenis Gorden</label>
+          <select id="jenis_id" name="jenis_id" class="col-span-2 bg-blue-50 p-2 rounded w-full" required>
+            <option value="">-- Pilih Jenis --</option>
+            @foreach ($JenisGorden as $Jenis)
+              <option value="{{ $Jenis['id'] }}">{{ $Jenis['nama_jenis'] }}</option>
+            @endforeach
+          </select>
+        </div>
+
+        <!-- Tombol Aksi -->
+        <div class="flex gap-4 mt-6">
+          <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">Simpan</button>
+          <a href="{{ route('admin.indexgorden') }}"
+                    onclick="return confirm('Yakin ingin membatalkan?')"
+                    class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600">
+                   Batal
+          </a>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
 
 </body>
 </html>

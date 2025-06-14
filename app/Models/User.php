@@ -47,4 +47,10 @@ class User extends   Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
+    public function chats()
+    {
+        return $this->hasMany(Chat::class, 'user_id');
+    }
+
 }
