@@ -13,6 +13,11 @@ class Gorden extends Model
     protected $table="gordens";
     protected $guarded=["id"];
     protected $with=["jenis_gorden"];
+    protected $fillable = ['nama_gorden', 'deskripsi', 'harga', 'stok', 'gambar', 'jenis_id'];
+    protected $casts = [
+        'harga' => 'integer',
+        'stock' => 'integer',
+    ];
 
     public function jenis_gorden() :BelongsTo
     {

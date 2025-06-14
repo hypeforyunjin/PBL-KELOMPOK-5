@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gorden;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,9 +13,13 @@ class AuthAdminController extends Controller
     public function Index(){
         return view("admin.login_admin");
     }
+
     public function Dashboard(){
-        return view("admin.dashboardLTE");
+        $gordens = Gorden::all();
+        return view("admin.dashboardLTE", compact('gordens'));
+        
     }
+    
     public function AuthAdmin(Request $request)
     {
         // dd("salah");
@@ -23,7 +28,7 @@ class AuthAdminController extends Controller
             'password' => 'required',
         ]);
         if (Auth::guard("admin")->attempt($credentials)) {
-            return redirect()->intended(route('admin.dashboard', absolute: false));
+            return redirect()->intended(route('admin.dashboardLTE', absolute: false));
 
         }
 

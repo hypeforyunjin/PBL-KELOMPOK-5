@@ -2,70 +2,111 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use Illuminate\Http\Request;
-
-use Illuminate\Support\Facades\DB;
-
-
-
+use App\Models\Gorden;
 
 class ProductController extends Controller
 {
     public function index(Request $request)
     {
+        $query = Gorden::query();
 
-        $query = Product::query();
         if ($request->has('search')) {
-            $query -> where('name' , 'like' , '%' . $request->search.'%');
+            $query->where('nama_gorden', 'like', '%' . $request->search . '%');
         }
+
         $products = $query->get();
+
         return view('Produk.produk-gorden', compact('products'));
-
-
-    }
-
-    public function AdminProduk()
-    {
-        $produk = [
-            ['nama' => 'Arla Kentut', 'deskripsi' => 'Cocok', 'harga' => 'Rp. 1.000.000', 'stock' => 10, 'gambar' => 'path/to/image1.jpg', 'jenis' => 'Gorden 1'],
-            ['nama' => 'Arla Kentut 1', 'deskripsi' => 'Acc', 'harga' => 'Rp. 1.000.000', 'stock' => 23, 'gambar' => 'path/to/image2.jpg', 'jenis' => 'Gorden 2'],
-        ];
-
-        return view('produk.AdminProduk', compact('produk'));
-
     }
 
     public function create()
     {
-        // Menampilkan form tambah produk
-        return view('produk.CreateProduk');
+        return view('Produk.CreateProduk');
     }
 
     public function store(Request $request)
     {
-        // Validasi data
         $validatedData = $request->validate([
-            'nama' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'harga' => 'required|numeric',
-            'stock' => 'required|integer',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'nama_gorden' => 'required|string|max:255',
+            'deskripsi'   => 'required|string',
+            'harga'       => 'required|numeric',
+            'stok'        => 'required|integer|min:0',
+            'gambar'      => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'kategori'    => 'nullable|string|max:255',
         ]);
 
-        // Simpan gambar jika ada
         if ($request->hasFile('gambar')) {
-            $path = $request->file('gambar')->store('public/produk');
-            $validatedData['gambar'] = $path;
+            $validatedData['gambar'] = $request->file('gambar')->store('GambarGorden', 'public');
         }
 
-        // Simpan data ke database (sesuaikan dengan model dan tabel Anda)
-        DB::table('produk')->insert($validatedData);
+        Gorden::create($validatedData);
 
-        // Redirect ke halaman admin produk
         return redirect()->route('produk.admin')->with('success', 'Produk berhasil ditambahkan!');
-        // return view('Produk.produk-gorden', compact('products'));
+    }
+
+    public function show($id)
+    {
+        $product = Gorden::findOrFail($id);
+        return view('Produk.DetailProduk', compact('product'));
+    }
+
+    public function tambahKeranjang(Request $request, $id)
+    {
+        $product = Gorden::findOrFail($id);
+        $quantity = (int) $request->input('quantity', 1);
+
+        if ($quantity > $product->stok) {
+            return back()->with('error', 'Jumlah melebihi stok tersedia.');
+        }
+
+        $keranjang = session()->get('keranjang', []);
+
+        if (isset($keranjang[$id])) {
+            $newQuantity = $keranjang[$id]['quantity'] + $quantity;
+
+            if ($newQuantity > $product->stok) {
+                return back()->with('error', 'Jumlah total melebihi stok.');
+            }
+
+            $keranjang[$id]['quantity'] = $newQuantity;
+        } else {
+            $keranjang[$id] = [
+                'nama'     => $product->nama_gorden,
+                'harga'    => $product->harga,
+                'quantity' => $quantity,
+                'stok'     => $product->stok,
+                'gambar'   => $product->gambar,
+                'kategori' => $product->kategori ?? '-'
+            ];
+        }
+
+        session()->put('keranjang', $keranjang);
+
+        return back()->with('success', 'Produk berhasil ditambahkan ke keranjang!');
+    }
+
+    public function tampilkanKeranjang()
+    {
+        $keranjang = session()->get('keranjang', []);
+        return view('customer.auth.keranjangPelanggan', compact('keranjang'));
+    }
+
+    public function hapusDariKeranjang($id)
+    {
+        $keranjang = session()->get('keranjang', []);
+
+        if (isset($keranjang[$id])) {
+            unset($keranjang[$id]);
+            session()->put('keranjang', $keranjang);
+        }
+
+        return redirect()->route('keranjang.pelanggan')->with('success', 'Produk dihapus dari keranjang.');
+    }
+
+    public function dashboard()
+    {
+        $gordens = Gorden::all();
+        return view('admin.dashboardLTE', compact('gordens'));
     }
 }
-
-

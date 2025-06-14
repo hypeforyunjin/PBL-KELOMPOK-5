@@ -85,7 +85,7 @@ class GordenController extends Controller
             "nama_gorden" => ["min:3", "required", "string"],
             "deskripsi" => ["nullable", "string"],
             "harga" => ["required", "numeric"],
-            "stok" => ["nullable", "numeric"],
+            "stok" => ["required", "integer", "min:0"],
             "gambar" => ["nullable", "mimes:jpg,jpeg,webp,png", "max:2048"],
             'jenis_id' => ['required', 'exists:jenis_gordens,id'],
         ]);
@@ -94,7 +94,7 @@ class GordenController extends Controller
             $Gambar = Str::uuid()->toString() . '.' . $request->gambar->extension();
             $request->gambar->storeAs('GambarGorden', $Gambar, 'public');
             $validated['gambar'] = $Gambar;
-        }
+        } 
 
         $data = $gorden->update([
             'nama_gorden' => $validated['nama_gorden'] ?? $gorden->nama_gorden,
